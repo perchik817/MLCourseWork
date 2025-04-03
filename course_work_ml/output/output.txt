@@ -1,0 +1,173 @@
+C:\Users\LENOVO\Documents\pythonProject13\.venv\Scripts\python.exe C:\Users\LENOVO\Documents\pythonProject13\main.py
+==================================================
+Начало анализа данных о насилии
+==================================================
+Загрузка данных...
+Удалено 18 строк с отсутствующими значениями Value или Year
+Итоговый размер датасета: 283 строк
+
+Первые 5 строк данных:
+       Sex    Year  ... Upper_CI Data_flag
+1  Females  2016.0  ...      NaN       NaN
+2  Females  2016.0  ...      NaN       NaN
+3  Females  2016.0  ...      NaN       NaN
+4  Females  2021.0  ...      NaN       NaN
+5  Females  2021.0  ...      NaN       NaN
+
+[5 rows x 13 columns]
+
+Информация о данных:
+<class 'pandas.core.frame.DataFrame'>
+Index: 283 entries, 1 to 300
+Data columns (total 13 columns):
+ #   Column                         Non-Null Count  Dtype
+---  ------                         --------------  -----
+ 0   Sex                            283 non-null    object
+ 1   Year                           283 non-null    float64
+ 2   Experience_of_violence         283 non-null    object
+ 3   Type_of_violence               283 non-null    object
+ 4   Sex_of_perpetrator             283 non-null    object
+ 5   Relationship_with_perpetrator  283 non-null    object
+ 6   Unit                           283 non-null    object
+ 7   Value                          283 non-null    float64
+ 8   RSE                            266 non-null    float64
+ 9   95%_MoE                        151 non-null    float64
+ 10  Lower_CI                       151 non-null    float64
+ 11  Upper_CI                       151 non-null    float64
+ 12  Data_flag                      53 non-null     object
+dtypes: float64(6), object(7)
+memory usage: 31.0+ KB
+None
+
+Анализ распределения данных:
+
+Основные статистики числовых полей:
+         Value     Year     RSE  95%_MoE
+count   283.00   283.00  266.00   151.00
+mean    287.73  2019.14   13.92     0.58
+std     840.92     4.49    9.85     0.41
+min       0.10  1996.00    1.30     0.10
+25%       1.40  2021.00    5.10     0.25
+50%      12.20  2021.00   11.80     0.40
+75%     121.90  2021.00   19.90     0.85
+max    7170.10  2021.00   44.00     2.00
+
+Уникальные значения категориальных переменных:
+
+Sex:
+Sex
+Females    207
+Males       52
+Persons     24
+Name: count, dtype: int64
+
+Experience_of_violence:
+Experience_of_violence
+Experienced violence since age 15                          157
+Experienced violence in the last 12 months                  78
+Experienced sexual harassment during the last 12 months     30
+Experienced sexual harassment since age 15                  18
+Name: count, dtype: int64
+
+Type_of_violence:
+Type_of_violence
+Sexual violence      81
+Sexual assault       79
+Sexual threat        75
+Sexual harassment    48
+Name: count, dtype: int64
+
+Sex_of_perpetrator:
+Sex_of_perpetrator
+By a male      184
+By a person     65
+By a female     34
+Name: count, dtype: int64
+
+Relationship_with_perpetrator:
+Relationship_with_perpetrator
+Any person - all relationships       139
+Stranger                              12
+Known person                          12
+Intimate partner or family member     12
+Intimate partner                      12
+Boyfriend or date                     12
+Other known person                    12
+Cohabiting partner                    11
+Family member                          6
+Father                                 6
+Name: count, dtype: int64
+
+Unit:
+Unit
+Proportion    160
+Number        123
+Name: count, dtype: int64
+
+Подготовка данных для ML...
+Удалено 0 строк с отсутствующими значениями Value
+
+Размерность данных после обработки:
+Признаки: (283, 36)
+Целевая переменная: (283,)
+
+Анализ целевой переменной (Value):
+Минимум: 0.10
+Максимум: 7170.10
+Среднее: 287.73
+Медиана: 12.20
+Стандартное отклонение: 840.92
+
+Обучение моделей...
+Размер обучающей выборки: 226
+Размер тестовой выборки: 57
+
+Оптимизация RandomForest...
+Лучшие параметры RandomForest: {'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 216}
+
+Оптимизация XGBoost...
+Лучшие параметры XGBoost: {'colsample_bytree': np.float64(0.749816047538945), 'learning_rate': np.float64(0.2952142919229748), 'max_depth': 5, 'n_estimators': 121, 'subsample': np.float64(0.8394633936788146)}
+
+Обучение Stacking модели...
+
+Оценка моделей на тестовых данных:
+
+RandomForest:
+  MAE: 131.5837
+  RMSE: 281.0505
+  R2: 0.4501
+
+XGBoost:
+  MAE: 131.0885
+  RMSE: 213.5609
+  R2: 0.6825
+
+Stacking:
+  MAE: 113.4814
+  RMSE: 293.2464
+  R2: 0.4014
+
+==================================================
+Итоговые результаты:
+==================================================
+
+Итоговые метрики моделей:
+
+RandomForest:
+  MAE: 131.5837
+  RMSE: 281.0505
+  R2: 0.4501
+
+XGBoost:
+  MAE: 131.0885
+  RMSE: 213.5609
+  R2: 0.6825
+
+Stacking:
+  MAE: 113.4814
+  RMSE: 293.2464
+  R2: 0.4014
+
+Лучшая модель: XGBoost с RMSE = 213.5609
+
+Process finished with exit code 0

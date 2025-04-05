@@ -355,7 +355,6 @@ def main(file_path):
     }
 
 
-# Запуск
 if __name__ == "__main__":
-    file_path = r"C:\Users\LENOVO\Downloads\AIHW-FDSV-all-data-download.xlsx"  # Укажите путь к файлу
+    file_path = r"data/AIHW-FDSV-all-data-download.xlsx"
     results = main(file_path)
